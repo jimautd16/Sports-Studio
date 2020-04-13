@@ -1,0 +1,20 @@
+﻿@model PlayersListViewModel
+
+	<h1>@Model.Position</h1>
+
+@foreach (var player in Model.Players)
+{	
+<div class="row">
+	<div class="col-lg-4 col-md-4">
+		<div class="card" style="width: 12rem;">
+			<img class="card-img-top" src="@player.ImgUrl" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">@player.fullName</h5>
+				<p class="card-text">@player.Address1</p>
+				<a href="#" class="btn btn-primary">Add to team</a>
+			</div>
+		</div>
+	</div>
+</div>
+}
+	

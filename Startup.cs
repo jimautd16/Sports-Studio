@@ -12,6 +12,8 @@ using SportsStudio.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SportsStudio.Abstractions;
+using SportsStudio.Models;
 
 namespace SportsStudio
 {
@@ -34,6 +36,9 @@ namespace SportsStudio
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+
+			services.AddScoped<IPlayerRepository, MockPlayerRepoistory>();
+			services.AddScoped<IPositionRepository, MockPositionRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +69,7 @@ namespace SportsStudio
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 				endpoints.MapRazorPages();
-			});
+			});		
 		}
 	}
 }
